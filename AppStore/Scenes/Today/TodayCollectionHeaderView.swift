@@ -10,9 +10,16 @@ import UIKit
 
 // Header / Footer 는 UICollectionReusableView
 final class TodayCollectionHeaderView: UICollectionReusableView {
+    private lazy var formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "M월 d일 EEEE"
+        f.locale = Locale(identifier: "Ko_kr")
+        return f
+    }()
+    
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "7월 22일 금요일"
+        label.text = formatter.string(from: Date.now)
         label.font = .systemFont(ofSize: 14.0, weight: .semibold)
         label.textColor = .secondaryLabel
         
