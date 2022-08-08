@@ -7,6 +7,7 @@
 
 import SnapKit
 import UIKit
+import Kingfisher
 
 final class AppDetailViewController: UIViewController {
     private let today: Today
@@ -72,7 +73,9 @@ final class AppDetailViewController: UIViewController {
         
         setupViews()
         
-        appIconImageView.backgroundColor = .lightGray
+        if let imageURL = URL(string: today.imageURL) {
+            appIconImageView.kf.setImage(with: imageURL)
+        }
         titleLabel.text = today.title
         subTitleLabel.text = today.subTitle
     }
