@@ -14,10 +14,6 @@ final class RankingFeatureCollectionviewCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .tertiarySystemGroupedBackground
-        imageView.layer.borderColor = UIColor.tertiaryLabel.cgColor
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.cornerRadius = 7.0
         
         return imageView
     }()
@@ -66,8 +62,9 @@ final class RankingFeatureCollectionviewCell: UICollectionViewCell {
         descriptionLabel.text = rankingFeature.description
         inAppPurchaseInfoLabel.isHidden = !rankingFeature.isInPurchaseApp
         
+        let processor = RoundCornerImageProcessor(cornerRadius: 20.0)
         if let imageURL = URL(string: rankingFeature.imageURL) {
-            imageView.kf.setImage(with: imageURL)
+            imageView.kf.setImage(with: imageURL, options: [.processor(processor)])
         }
     }
 }
