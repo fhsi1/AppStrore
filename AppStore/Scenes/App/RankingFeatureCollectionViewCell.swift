@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import Kingfisher
 import UIKit
 
 final class RankingFeatureCollectionviewCell: UICollectionViewCell {
@@ -64,6 +65,10 @@ final class RankingFeatureCollectionviewCell: UICollectionViewCell {
         titleLabel.text = rankingFeature.title
         descriptionLabel.text = rankingFeature.description
         inAppPurchaseInfoLabel.isHidden = !rankingFeature.isInPurchaseApp
+        
+        if let imageURL = URL(string: rankingFeature.imageURL) {
+            imageView.kf.setImage(with: imageURL)
+        }
     }
 }
 
